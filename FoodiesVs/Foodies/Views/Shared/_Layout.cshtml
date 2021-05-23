@@ -1,0 +1,44 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Foodies.Models
+@using Foodies.Areas.Identity.Data
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/headerMainPage.css" />
+    <link rel="stylesheet" href="~/css/sideMenu.css" />
+    <link rel="stylesheet" href="~/css/custom.css"/>
+    <link rel="shortcut icon" type="image/x-icon" href="~/assets/favicon.ico" />
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-2 p-0">
+                @if (this.User.Identity.IsAuthenticated && this.User.IsInRole("Admin"))
+                {
+                    <partial name="_AdminMenu" />
+                }
+                else
+                {
+                    <partial name="_UserMenu" />
+                }
+            </div>
+            <div role="main" class="col-10 p-0">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/scripts/togglenav.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

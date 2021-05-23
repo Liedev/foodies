@@ -1,0 +1,28 @@
+﻿@model Foodies.Models.PreperationTime
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+<div id="headerMain" class="py-5 bg-image-full">
+    <h1 class="text-center">Delete A Level Of Preperation</h1>
+    <p class="text-center"><strong>It will be missed</strong></p>
+</div>
+<div class="card col-4 mt-4">
+    <p class="h4 mt-2">PreperationTime</p>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.RangeMinutes)
+        </dt>
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.RangeMinutes)
+        </dd>
+    </dl>
+</div>
+<form asp-action="Delete" class="mt-4">
+    <input type="hidden" asp-for="PreperationTimeId" />
+    <input type="submit" value="Delete" class="btn btn-danger" />
+    <a asp-action="Index" class="btn btn-primary">Back to List</a>
+</form>

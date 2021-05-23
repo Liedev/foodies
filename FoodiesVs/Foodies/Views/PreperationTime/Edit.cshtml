@@ -1,0 +1,30 @@
+﻿@model Foodies.Models.PreperationTime
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div id="headerMain" class="py-5 bg-image-full">
+    <h1 class="text-center">Edit Preperation Time</h1>
+    <p class="text-center"><strong>Happy Editing</strong></p>
+</div>
+<div class="row mt-5">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="PreperationTimeId" />
+            <div class="form-group">
+                <label asp-for="RangeMinutes" class="control-label"></label>
+                <input asp-for="RangeMinutes" class="form-control" />
+                <span asp-validation-for="RangeMinutes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-primary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

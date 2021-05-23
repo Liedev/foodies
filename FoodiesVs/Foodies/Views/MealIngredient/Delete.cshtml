@@ -1,0 +1,45 @@
+﻿@model Foodies.Models.MealIngredient
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div id="headerMain" class="py-5 bg-image-full">
+    <h1 class="text-center">Delete A Meal Ingrediënt</h1>
+    <p class="text-center"><strong>It will be missed</strong></p>
+</div>
+<div class="card col-3 mt-4">
+    <p class="h4 mt-2">MealIngredient</p>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Meal)
+        </dt>
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.Meal.Name)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Ingredient)
+        </dt>
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.Ingredient.Name)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Unit)
+        </dt>
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.Unit.Name)
+        </dd>
+    </dl>
+</div>
+<form asp-action="Delete" class="mt-4">
+    <input type="hidden" asp-for="MealIngredientId" />
+    <input type="submit" value="Delete" class="btn btn-danger" />
+    <a asp-action="Create" asp-route-id="@Model.MealId" class="btn btn-primary">Back To Meal Ingrediënts</a>
+</form>

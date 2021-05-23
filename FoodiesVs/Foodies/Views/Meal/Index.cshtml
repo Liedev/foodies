@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Foodies.Models.Meal>
+
+@{
+    ViewData["Title"] = "Meals";
+}
+
+<div id="headerMain" class="py-5 bg-image-full">
+    <h1 class="text-center">Meals</h1>    
+</div>
+<div class="card mt-5">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PictureMeal)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ShortDiscription)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PreperationDiscribtion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.NumberOfPeople)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EndUserId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LevelPreperation)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PreperationTime)
+                </th>
+                <th><a asp-action="Create" class="btn btn-primary">Create New Meal</a></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img src="~/assets/@item.PictureMeal"
+                             class="rounded-circle"
+                             height="40" width="40"
+                             asp-append-version="true" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ShortDiscription)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PreperationDiscribtion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NumberOfPeople)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EndUserId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LevelPreperation.Level)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PreperationTime.RangeMinutes)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.MealId" class="btn btn-primary m-1">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@item.MealId" class="btn btn-primary m-1">Delete</a>
+                        <a asp-action="Recipe" asp-route-id="@item.MealId" class="btn btn-primary m-1">Recipe</a>
+                        <a asp-controller="MealIngredient" asp-action="Create" asp-route-id="@item.MealId" class="btn btn-primary m-1">Add Ingredients</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+

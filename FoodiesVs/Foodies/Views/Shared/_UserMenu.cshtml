@@ -1,0 +1,47 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Foodies.Models
+@using Foodies.Areas.Identity.Data
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+    <!--https://bootstrapious.com/p/bootstrap-sidebar-->
+    <div class="wrapper">
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <a asp-controller="Home" asp-action="Index">
+                    <img src="~/assets/foodies logo.png" alt="Foodies Logo" class="logo" />
+                </a>
+            </div>
+            <div>
+                @if (this.User.Identity.IsAuthenticated)
+                {
+                    <a asp-area="Identity" asp-page="/Account/Manage/Index">
+                        <img src="~/assets/blank-profile-picture-973460_640.png" alt="avatar" class="avatar" />
+                    </a>
+                    <p class="text-center">Logged in</p>
+                }
+                else
+                {
+                    <a asp-area="Identity" asp-page="/Account/Login">
+                        <img src="~/assets/blank-profile-picture-973460_640.png" alt="avatar" class="avatar" />
+                    </a>
+                    <p class="text-center">Log In</p>
+                }
+            </div>
+            <ul class="list-unstyled components">
+                <li>
+                    <a asp-controller="EndUser" asp-action="Browse">Browse</a>
+                </li>
+                <li>
+                    <a asp-controller="EndUser" asp-action="Foodies">All about Foodies</a>
+                </li>
+                <li>
+                    <a asp-controller="EndUser" asp-action="TermsOfService">Terms of Service</a>
+                </li>
+                <li>
+                    <a asp-controller="EndUser" asp-action="Privacy">Privacy</a>
+                </li>
+            </ul>
+        </nav>
+    </div>

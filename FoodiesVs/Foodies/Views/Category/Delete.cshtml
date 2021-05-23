@@ -1,0 +1,33 @@
+﻿@model Foodies.Models.Category
+
+@{
+    ViewData["Title"] = "Delete Category";
+}
+
+<div id="headerMain" class="py-5 bg-image-full">
+    <h1 class="text-center">Delete Category</h1>
+    <p class="text-center"><strong>It will be missed</strong></p>
+</div>
+<div class="card mt-4 col-6">
+    <p class="h4 mt-2">Category</p>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Parent)
+        </dt>
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.Parent.Name)
+        </dd>
+    </dl>
+</div>
+<form class="mt-4" asp-action="Delete">
+    <input type="hidden" asp-for="CategoryId" />
+    <input type="submit" value="Delete" class="btn btn-danger" />
+    <a asp-action="Index" class="btn btn-primary">Back to List</a>
+</form>

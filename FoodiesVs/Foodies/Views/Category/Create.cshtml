@@ -1,0 +1,34 @@
+﻿@model Foodies.ViewModels.CategoryViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div id="headerMain" class="py-5 bg-image-full">
+    <h1 class="text-center">Create a Category</h1>
+    <p class="text-center"><strong>Happy Creating</strong></p>
+</div>
+<div class="row mt-4">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div class="form-group">
+                <label asp-for="Category.Name" class="control-label"></label>
+                <input asp-for="Category.Name" class="form-control" />
+                <span asp-validation-for="Category.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Category.ParentId" class="control-label"></label>
+                <select asp-for="Category.ParentId" class="form-control" asp-items="Model.Parents"></select>
+            </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-primary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

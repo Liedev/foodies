@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Foodies.Models.Unit>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div id="headerMain" class="py-5 bg-image-full">
+    <h1 class="text-center">Measurement Unit</h1>
+</div>
+<div class="card mt-5 col-sm-6">    
+    <table class="table">
+        <thead class="col-sm-3 h2">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th class="text-right"><a asp-action="Create" class="btn btn-primary">Create New Measurement Unit</a></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td class="text-right col-sm-3">
+                        <a asp-action="Edit" asp-route-id="@item.UnitId" class="btn btn-primary">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@item.UnitId" class="btn btn-primary">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,77 @@
+﻿@model Foodies.ViewModels.CreateMealViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div id="headerMain" class="py-5 bg-image-full">
+    <h1 class="text-center">Add A Meal</h1>
+    <p class="text-center"><strong>Happy Creating</strong></p>
+</div>
+<div class="mt-5">    
+    <form asp-action="Create" enctype="multipart/form-data">
+        <div class="row p-0 m-0">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Meal.Name" class="control-label"></label>
+                    <input asp-for="Meal.Name" class="form-control" />
+                    <span asp-validation-for="Meal.Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Meal.ShortDiscription" class="control-label"></label>
+                    <input asp-for="Meal.ShortDiscription" class="form-control" />
+                    <span asp-validation-for="Meal.ShortDiscription" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Meal.NumberOfPeople" class="control-label"></label>
+                    <input asp-for="Meal.NumberOfPeople" class="form-control" />
+                    <span asp-validation-for="Meal.NumberOfPeople" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Meal.LevelPreperationId" class="control-label"></label>
+                    <select asp-for="Meal.LevelPreperationId" class="form-control" asp-items="Model.LevelPreperations"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Meal.PreperationTimeId" class="control-label"></label>
+                    <select asp-for="Meal.PreperationTimeId" class="form-control" asp-items="Model.PreperationTimes"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Category" class="control-label"></label>
+                    <select asp-for="SelectedCategories" class="form-control" asp-items="Model.Category"></select>
+                    <label asp-for="ErrorMessage" class="alert-warning" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="MealImage" class="control-label"></label>
+                    <div class="custom-file">
+                        <input asp-for="MealImage" class="custom-file-input" id="customFile" />
+                        <label class="custom-file-label" for="customFile">Choose File</label>
+                    </div>
+                    <span asp-validation-for="MealImage" class="text-danger"></span>
+                </div>
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                    <a asp-action="Index" class="btn btn-primary">Back to List</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Meal.PreperationDiscribtion" class="control-label"></label>
+                    <textarea asp-for="Meal.PreperationDiscribtion" class="form-control" rows="30"></textarea>
+                    <span asp-validation-for="Meal.PreperationDiscribtion" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+    @section Scripts {
+        <script type="text/javascript">
+            // Filename MealImage Appears on Select
+            $(".custom-file-input").on("change", function () {
+                var fileName = $(this).val().split("\\").pop();
+                $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+            });
+        </script>
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
+</div>

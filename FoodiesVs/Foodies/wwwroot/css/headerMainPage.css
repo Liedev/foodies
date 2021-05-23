@@ -1,0 +1,18 @@
+﻿#headerMain {
+    background-image: url(/assets/italian-cuisine-2378729_1920.jpg);
+    height: 375px;
+}
+
+#headerError {
+    background-image: url(/assets/engin-akyurt-WxUNinQmGy4-unsplash.jpg);
+    margin-top: 100px;
+    height: 1100px;
+}
+
+.bg-image-full {
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}

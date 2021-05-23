@@ -1,0 +1,55 @@
+﻿@model Foodies.ViewModels.IndexCategoryViewModel
+
+@{
+    ViewData["Title"] = "Category";
+}
+
+<div id="headerMain" class="py-5 bg-image-full">
+    <h1 class="text-center">Categories</h1>
+</div>
+<div class="card col-6 mt-5">
+    <form asp-controller="Category" asp-action="Search" method="get" class="mt-4">
+        <div class="form-actions no-color">
+            <p>
+                <a asp-action="Create" class="btn btn-primary">Create New Category</a>
+                Search a category:
+                <input asp-for="CategorySearch" />
+                <input type="submit" value="Search" class="btn btn-primary" />
+                <a asp-controller="Category" asp-action="Index" class="btn btn-primary">Full List</a>
+            </p>
+        </div>
+    </form>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Categories[0].Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Categories[0].Parent)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Category category in Model.Categories)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => category.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => category.Parent.Name)
+                    </td>
+                    <td>
+                        <p>
+                            <a asp-action="Edit" asp-route-id="@category.CategoryId" class="btn btn-primary">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@category.CategoryId" class="btn btn-primary">Delete</a>
+                        </p>                        
+                    </td>
+                </tr>
+}
+        </tbody>
+    </table>
+</div>
+

@@ -1,0 +1,29 @@
+﻿.avatar2 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    height: 500px;
+    border-radius: 50%;
+}
+
+.avatar3 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.link {
+    color: #007bff;
+    background-color: transparent;
+}
+
+.textAvatarMeal {
+    font-size: 22px;
+    font-weight: 500;
+    color: #AE563F;
+    background: transparent;
+}

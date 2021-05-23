@@ -1,0 +1,45 @@
+﻿@model Foodies.ViewModels.MealViewModel
+
+@{
+    ViewData["Title"] = "Foodies";
+}
+<!--https://bootstrapious.com/p/bootstrap-image-captions-->
+<div class="text-center">
+    <div id="headerMain" class=" py-5 bg-image-full">
+        <h1 class="text-center">Welcome To Foodies</h1>
+        <p class="text-center"><strong>Happy Coocking</strong></p>
+    </div>
+</div>
+<div class="row m-3 p-1">
+    <h2>Pick a meal to enjoy today</h2>
+</div>
+    <div class="row ml-2">
+        <div class="col-lg-12">
+            <div class="row">
+                @foreach (Meal meal in Model.Meals)
+                {
+                    if (meal.MealIngredients.Count != 0)
+                    {
+                        <div class="col-lg-2">
+                            <a asp-controller="Meal" asp-action="Recipe" asp-route-id="@meal.MealId">
+                                <card class="card h-100">
+                                    <img src="~/assets/@meal.PictureMeal" asp-append-version="true" alt="@meal.Name" class="card-img-top" />
+                                    <div class="card-body">
+                                        <p class="card-title">
+                                            <strong>
+                                                @meal.Name
+                                            </strong>
+                                        </p>
+                                        <p class="card-text">For @meal.NumberOfPeople people</p>
+                                        <p class="card-text">@meal.ShortDiscription</p>
+                                    </div>
+                                </card>
+                            </a>
+                        </div>
+                    }                    
+                }
+            </div>
+        </div>
+    </div>
+
+   

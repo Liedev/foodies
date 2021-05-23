@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Foodies.Models.MealIngredient>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div id="headerMain" class="py-5 bg-image-full">
+    <h1 class="text-center">Meal Ingrediënts</h1>
+</div>
+<p class="mt-5">
+    <a asp-controller="Meal" asp-action="Index" class="btn btn-primary">Back to Meals</a>
+</p>
+<div class="card mt-2 col-sm-3">
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Meal)
+                </th>
+                <th class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Ingredient)
+                </th>
+                <th class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Amount)
+                </th>
+                <th class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Unit)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="col-sm-2">
+                        @Html.DisplayFor(modelItem => item.Meal.Name)
+                    </td>
+                    <td class="col-sm-2">
+                        @Html.DisplayFor(modelItem => item.Ingredient.Name)
+                    </td>
+                    <td class="col-sm-2">
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                    <td class="col-sm-2">
+                        @Html.DisplayFor(modelItem => item.Unit.Name)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,56 @@
+﻿@if (this.User.IsInRole("Admin") && this.User.Identity.IsAuthenticated)
+{
+    <!--https://bootstrapious.com/p/bootstrap-sidebar-->
+    <div class="wrapper">
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <a asp-controller="Home" asp-action="Index">
+                    <img src="~/assets/foodies logo.png" alt="Foodies Logo" class="logo"/>
+                </a>
+            </div>
+            <div>
+                <a asp-area="Identity" asp-page="/Account/Manage/Index">
+                    <img src="~/assets/blank-profile-picture-973460_640.png" alt="avatar" class="avatar">
+                </a>
+                <p class="text-center">Logged in</p>
+            </div>
+            <ul class="list-unstyled components">
+                <li>
+                    <a href="#mealSubMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Meals</a>
+                    <ul class="collapse list-unstyled" id="mealSubMenu">
+                        <li>
+                            <a asp-controller="Meal" asp-action="Index">Meal List</a>
+                        </li>
+                        <li>
+                            <a asp-controller="Category" asp-action="Index">Category List</a>
+                        </li>
+                        <li>
+                            <a asp-controller="Ingredient" asp-action="Index">Ingrediënt List</a>
+                        </li>
+                        <li>
+                            <a asp-controller="LevelPreperation" asp-action="Index">Preperation Level List</a>
+                        </li>
+                        <li>
+                            <a asp-controller="PreperationTime" asp-action="Index">Preperation Time List</a>
+                        </li>
+                        <li>
+                            <a asp-controller="Unit" asp-action="Index">Measurement Unit List</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a asp-controller="EndUser" asp-action="Browse">Browse</a>
+                </li>
+                <li>
+                    <a asp-controller="EndUser" asp-action="Foodies">All about Foodies</a>
+                </li>
+                <li>
+                    <a asp-controller="EndUser" asp-action="TermsOfService">Terms of Service</a>
+                </li>
+                <li>
+                    <a asp-controller="EndUser" asp-action="Privacy">Privacy</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+}

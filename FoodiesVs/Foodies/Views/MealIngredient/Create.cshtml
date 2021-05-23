@@ -1,0 +1,87 @@
+﻿@model Foodies.ViewModels.MealIngredientViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div id="headerMain" class="py-5 bg-image-full">
+    <h1 class="text-center">Add Ingrediënts To A Meal</h1>
+    <p class="text-center"><strong>Happy Creating</strong></p>
+</div>
+<div class="mt-5">
+    <div class="col-md-12 col-ms-12">
+        <form asp-action="Create">
+            <div class="row">
+                <div class="col-md-6">
+                    <input type="hidden" asp-for="MealIngredient.MealId" />
+                    <div class="form-group">
+                        <label asp-for="MealIngredient.Ingredient.Name" class="control-label"></label>
+                        <select asp-for="MealIngredient.IngredientId" class="form-control" asp-items="Model.Ingredients"></select>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MealIngredient.Amount" class="control-label"></label>
+                        <input asp-for="MealIngredient.Amount" class="form-control" />
+                        <span asp-validation-for="MealIngredient.Amount" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="MealIngredient.UnitId" class="control-label"></label>
+                        <select asp-for="MealIngredient.UnitId" class="form-control" asp-items="Model.Units"></select>
+                    </div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                        <a asp-action="Index" class="btn btn-primary">List of ingredients</a>
+                    </div>
+                </div>
+                <div class="col-md-6 card">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.MealIngredient.Meal)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.MealIngredient.Ingredient)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.MealIngredient.Amount)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.MealIngredient.Unit)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.MealIngredients)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Meal.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Ingredient.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Amount)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Unit.Name)
+                                    </td>
+                                    <td class="text-right">
+                                        <a asp-action="Edit" asp-route-id="@item.MealIngredientId" class="btn btn-primary">Edit</a>
+                                        <a asp-action="Delete" asp-route-id="@item.MealIngredientId" class="btn btn-primary">Delete</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

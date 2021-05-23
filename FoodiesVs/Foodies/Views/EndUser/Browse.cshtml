@@ -1,0 +1,39 @@
+﻿@model Foodies.ViewModels.BrowseViewModel
+
+@{
+    ViewData["Title"] = "Foodies";
+}
+<div class="text-center">
+    <div id="headerMain" class=" py-5 bg-image-full">
+        <h1 class="text-center">Let's Get Coocking</h1>
+    </div>
+</div>
+<div class="mt-5">
+    <form asp-controller="EndUser" asp-action="Search" method="get" class="mt-4 ml-2">
+        <div class="form-actions no-color">
+            <p>
+                Search A Meal:
+                <input asp-for="MealSearch" />
+                <input type="submit" value="Search" class="btn btn-primary" />
+                <a asp-controller="EndUser" asp-action="Browse" class="btn btn-primary">Full List</a>
+            </p>
+        </div>
+    </form>
+    <div class="row">
+        @foreach (Meal meal in Model.Meals)
+        {
+            if (meal.MealIngredients.Count != 0)
+            {
+                <div class="col-sm-2">
+                    <a asp-controller="Meal" asp-action="Recipe" asp-route-id="@meal.MealId">
+                        <div>
+                            <img src="~/assets/@meal.PictureMeal" asp-append-version="true" alt="@meal.Name" class="avatar3" />
+                            <p class="text-center textAvatarMeal">@meal.Name</p>
+                        </div>
+                    </a>
+                </div>
+            }
+        }
+    </div>
+</div>
+

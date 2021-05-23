@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Foodies.Models.LevelPreperation>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div id="headerMain" class="py-5 bg-image-full">
+    <h1 class="text-center">Level of Preperation</h1>
+</div>
+<div class="card mt-5 col-sm-6">
+    <table class="table">
+        <thead class="col-sm-3">
+            <tr>
+                <th class="h2">
+                    @Html.DisplayNameFor(model => model.Level)
+                </th>
+                <th class="text-right"><a asp-action="Create" class="btn btn-primary">Create New Level</a></th>
+            </tr>
+        </thead>
+        <tbody class="col-sm-3">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Level)
+                    </td>
+                    <td class="text-right">
+                        <a asp-action="Edit" asp-route-id="@item.LevelPreperationId" class="btn btn-primary">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@item.LevelPreperationId" class="btn btn-primary">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

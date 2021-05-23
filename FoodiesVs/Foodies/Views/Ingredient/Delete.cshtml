@@ -1,0 +1,97 @@
+﻿@model Foodies.Models.Ingredient
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div id="headerMain" class="py-5 bg-image-full">
+    <h1 class="text-center">Delete An Ingredient</h1>
+    <p class="text-center"><strong>It will be missed</strong></p>
+</div>
+<div class="card col-6 mt-4">
+    <dl class="row">
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.EnergyKcal)
+        </dt>
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.EnergyKcal)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.EnergyKj)
+        </dt>
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.EnergyKj)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Water)
+        </dt>
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.Water)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.EggWhite)
+        </dt>
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.EggWhite)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Carbohydrates)
+        </dt>
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.Carbohydrates)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Sugar)
+        </dt>
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.Sugar)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Fat)
+        </dt>
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.Fat)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.SaturatedFat)
+        </dt>
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.SaturatedFat)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.SingleSaturatedFat)
+        </dt>
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.SingleSaturatedFat)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.MultiSaturatedFat)
+        </dt>
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.MultiSaturatedFat)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Cholesterol)
+        </dt>
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.Cholesterol)
+        </dd>
+        <dt class="col-sm-3">
+            @Html.DisplayNameFor(model => model.Fiber)
+        </dt>
+        <dd class="col-sm-3">
+            @Html.DisplayFor(model => model.Fiber)
+        </dd>
+    </dl>
+</div>
+<form asp-action="Delete" class="mt-4">
+    <input type="hidden" asp-for="IngredientId" />
+    <input type="submit" value="Delete" class="btn btn-danger" />
+    <a asp-action="Index" class="btn btn-primary">Back to List</a>
+</form>

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Foodies.Models.PreperationTime>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div id="headerMain" class="py-5 bg-image-full">
+    <h1 class="text-center">Preperation Times</h1>
+</div>
+<div class="card mt-5 col-sm-6">
+    <table class="table">
+        <thead class="col-sm-3 h2">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.RangeMinutes)
+                </th>
+                <th class="text-right"><a asp-action="Create" class="btn btn-primary">Create New Preperation Time</a></th>
+            </tr>
+        </thead>
+        <tbody class=" col-sm-3">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RangeMinutes)
+                    </td>
+                    <td class="text-right">
+                        <a asp-action="Edit" asp-route-id="@item.PreperationTimeId" class="btn btn-primary">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@item.PreperationTimeId" class="btn btn-primary">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
